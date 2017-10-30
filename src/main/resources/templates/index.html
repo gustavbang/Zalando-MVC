@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: relics">
+
+
+</head>
+<body>
+
+
+Current date is: <b th:text="${execInfo.now.time}"></b>
+
+<h1 class="tekst"> Costumers: </h1>
+<table class="mitTable">
+    <tr th:each="customers : ${customers}" class="row">
+        <td th:text="${customers.firstName}"></td>
+        <td th:text="${customers.lastName}"></td>
+        <td th:text="${customers.email}"></td>
+        <td th:text="${customers.password}"></td>
+        <td th:text="${customers.gender}"></td>
+        <td th:text="${customers.mobileNumber}"></td>
+        <td th:text="${customers.town}"></td>
+        <td th:text="${customers.postCode}"></td>
+        <td th:text="${customers.country}"></td>
+        <td th:text="${customers.customerID}"></td>
+    </tr>
+</table>
+
+<h1 class="tekst"> Orders:</h1>
+<table class="mitTable">
+    <tr th:each="orders : ${orders}" class="row">
+    <td th:text="${orders.orderID}"></td>
+    <td th:text="${orders.date}"></td>
+    <td th:text="${orders.totalDue}"></td>
+    <td th:text="${orders.fkCustomerID}"></td>
+    </tr>
+</table>
+
+
+<h1 class="tekst"> Order Products: </h1>
+<table class="mitTable">
+<tr th:each="myOrderProducts : ${orderProducts}" class="row">
+    <td th:text="${myOrderProducts.fkOrder}"></td>
+    <td th:text="${myOrderProducts.fkProduct}"></td>
+    <td th:text="${myOrderProducts.quantity}"></td>
+</tr>
+</table>
+
+
+
+
+
+
+
+<h1 class="tekst"> Products: </h1>
+<table class="mitTable">
+    <tr th:each="products : ${products}" class="row">
+        <td th:text="${products.name}"></td>
+        <td th:text="${products.color}"></td>
+        <td th:text="${products.price}"></td>
+        <td th:text="${products.productId}"></td>
+    </tr>
+</table>
+
+<header th:replace="layout :: min-header"/>
+<footer th:replace="layout :: min-footer"/>
+</body>
+</html>

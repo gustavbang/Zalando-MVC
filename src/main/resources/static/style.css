@@ -1,0 +1,21 @@
+
+body {
+    background-color: #d9cfb0;
+    font-family: Calibri;
+
+}
+
+.mitTable {
+    background-color: #bf9292;
+    box-shadow: 2px 2px 2px #888888;
+
+}
+
+.row {
+    background-color: #e8b1b1;
+}
+
+.tekst {
+    font-size: 20px;
+    color: #4b3838;
+}
