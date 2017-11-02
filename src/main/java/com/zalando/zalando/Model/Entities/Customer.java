@@ -1,5 +1,7 @@
 package com.zalando.zalando.Model.Entities;
 
+import java.util.ArrayList;
+
 public class Customer {
     private String firstName;
     private String lastName;
@@ -26,6 +28,18 @@ public class Customer {
         this.postCode = postCode;
         this.country = country;
         this.customerID = customerID;
+    }
+
+    public Customer(String firstName, String lastName, String email, String password, String gender, String mobileNumber, String town, int postCode, String country) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.mobileNumber = mobileNumber;
+        this.town = town;
+        this.postCode = postCode;
+        this.country = country;
     }
 
     public String getFirstName() {

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: relics">
+</head>
+<body>
+<header th:replace="layout :: min-header"/>
+Current date is: <b th:text="${execInfo.now.time}"></b>
+
+<h1 class="tekst">Create Customer</h1>
+<form method="Post" th:action="@{/create}" th:object="${customer}">
+    <input   type="text"   th:field="*{firstName}" placeholder="First Name"  />
+    <input   type="text"   th:field="*{lastName}" placeholder="Last Name"/>
+    <input   type="text"   th:field="*{email}" placeholder="Email"/>
+    <input   type="text"   th:field="*{password}" placeholder="Password"/>
+    <input   type="text"   th:field="*{gender}" placeholder="Gender"/>
+    <input   type="text"   th:field="*{mobileNumber}" placeholder="Mobile Number"/>
+    <input   type="text"   th:field="*{town}" placeholder="Town"/>
+    <input   type="text"   th:field="*{postCode}" placeholder="Post Code"/>
+    <input   type="text"   th:field="*{country}" placeholder="Country"/>
+    <input   type="submit"   value="Send"   />
+</form>
+
+
+<footer th:replace="layout :: min-footer"/>
+</body>
+</html>

@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class CustomerRepository implements ICustomerRepository {
         ArrayList<Order> orders = new ArrayList<>();
         SqlRowSet sqlRowSet = jdbc.queryForRowSet("SELECT * FROM zalando.`order`");
         while (sqlRowSet.next()) {
-            orders.add(new Order(sqlRowSet.getByte("order_id"), sqlRowSet.getDate("date"), sqlRowSet.getByte("total_due"), sqlRowSet.getByte("fk_customer_id")));
+            orders.add(new Order(sqlRowSet.getByte("order_id"), sqlRowSet.getDate("date"), sqlRowSet.getInt("total_due"), sqlRowSet.getByte("fk_customer_id")));
         }
         return orders;
     }
@@ -56,5 +57,19 @@ public class CustomerRepository implements ICustomerRepository {
     @Override
     public List<OrderProduct> readOrderProducts() {
         return opRepo.findAll();
+    }
+
+    public void create(Customer customer) {
+
+        jdbc.update("INSERT INTO zalando.customers(first_name, last_name, email, password, gender, mobile_number, town, postcode, country) " + "VALUES('" + customer.getFirstName() + "', '" + customer.getLastName() + "', '" + customer.getEmail() + "', '" + customer.getPassword() + "', '" + customer.getGender() + "', '" + customer.getMobileNumber() + "', '" + customer.getTown() + "', '" + customer.getPostCode() + "', '" + customer.getCountry() + "')");
+    }
+
+    public Customer getUser(String email, String password) {
+        for (int i=0; i<readCustomers().size(); i++) {
+            if (readCustomers().get(i).getEmail().equalsIgnoreCase(email)
+                && readCustomers().get(i).getPassword().equalsIgnoreCase(password)) {
+                return readCustomers().get(i);
+            }
+        } return null;
     }
 }

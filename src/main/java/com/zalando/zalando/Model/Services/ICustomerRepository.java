@@ -16,4 +16,8 @@ public ArrayList<Customer> readCustomers();
 public ArrayList<Order> readOrders();
 public List<OrderProduct> readOrderProducts();
 
+public void create(Customer customer);
+
+public Customer getUser(String email, String password);
+
 }
